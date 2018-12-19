@@ -1,20 +1,24 @@
 import sys
-from PythonProgect import *
+from PythonProgect import Ui_MainWindow
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-
-class MyWin(QtWidgects.QMainWindow):
-    def __init__(self,parent-None):
-        QtWidgects.QWidget.__init__(self,parent)
-        self.ui = Ui_MainWindow
+class MyWin(QtWidgets.QMainWindow):
+    def __init__(self, parent=None):
+        QtWidgets.QWidget.__init__(self, parent)
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.getResult.clicked.connect(self.getResult)
 
-    def getResult(self):
-        pass
+        self.ui.getResult.clicked.connect(self.gResult)
+
+    def gResult(self):
+        n1 =self.ui.input1.text()
+        n2 = int(self.ui.input2.text())
+        s = int(n1, n2)
+        self.ui.Text.setText(str(s))
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     myapp = MyWin()
     myapp.show()
     sys.exit(app.exec_())
